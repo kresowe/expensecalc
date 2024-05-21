@@ -12,7 +12,7 @@ class Expenses:
     def add_expense(self, expense):
         if expense is not None:
             name = expense['name']
-            category = categories[expense['category']]
+            category = categories[expense['category']-1]
             value = expense['value']
             self._expenses.append({'name': name,
                                    'category': category,
@@ -23,5 +23,9 @@ class Expenses:
     @property
     def total_value(self):
         return self._total_value
+
+    @property
+    def expenses(self):
+        return self._expenses
 
     # def value_per_category_stats(self):
