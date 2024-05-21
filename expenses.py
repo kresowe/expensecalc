@@ -1,15 +1,17 @@
+from typing import Optional
+
 categories = ('Food', 'Entertainment', 'Commuting', 'Bills', 'Other')
 
 
 class Expenses:
-    def __init__(self):
+    def __init__(self) -> None:
         self._expenses = []
         self._total_value = 0.
         self._value_per_category = {}
         for category in categories:
             self._value_per_category[category] = 0.
 
-    def add_expense(self, expense):
+    def add_expense(self, expense: Optional[dict]) -> None:
         if expense is not None:
             name = expense['name']
             category = categories[expense['category']-1]
@@ -21,14 +23,14 @@ class Expenses:
             self._value_per_category[category] += value
 
     @property
-    def total_value(self):
+    def total_value(self) -> float:
         return self._total_value
 
     @property
-    def expenses(self):
+    def expenses(self) -> list:
         return self._expenses
 
-    def value_per_category_stats(self):
+    def value_per_category_stats(self) -> dict:
         response = {}
         for category in self._value_per_category:
             val = self._value_per_category[category]

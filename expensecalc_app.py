@@ -17,4 +17,3 @@ if __name__ == '__main__':
             show_total_value(expenses)
             show_stats(expenses)
     bye()
-

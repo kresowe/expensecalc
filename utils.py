@@ -4,7 +4,7 @@ OPTION_SHOW = 2
 OPTION_EXIT = 3
 
 
-def user_input_in_given_integers(user_inp, options):
+def user_input_in_given_integers(user_inp: str, options: tuple) -> int:
     try:
         option = int(user_inp)
         if option not in options:
@@ -18,7 +18,7 @@ def user_input_in_given_integers(user_inp, options):
     return option
 
 
-def user_input_value(user_inp):
+def user_input_value(user_inp: str) -> float:
     try:
         value = round(float(user_inp), 2)
         if value < 0:
