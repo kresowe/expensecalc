@@ -34,6 +34,11 @@ def test_valid_user_input_value_returns_value():
     assert user_input_value("10.5") == pytest.approx(10.5)
 
 
+def test_input_correctly_rounded():
+    assert user_input_value("10.511") == pytest.approx(10.51)
+    assert user_input_value("10.508") == pytest.approx(10.51)
+
+
 def test_invalid_user_input_value_returns_0():
     assert user_input_value("-10.5") == pytest.approx(0.0)
     assert user_input_value("aa") == pytest.approx(0.0)

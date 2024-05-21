@@ -28,4 +28,13 @@ class Expenses:
     def expenses(self):
         return self._expenses
 
-    # def value_per_category_stats(self):
+    def value_per_category_stats(self):
+        response = {}
+        for category in self._value_per_category:
+            val = self._value_per_category[category]
+            if self.total_value == 0:
+                share = 0
+            else:
+                share = round(val / self.total_value * 100, 2)
+            response[category] = {'total': val, 'share': share}
+        return response

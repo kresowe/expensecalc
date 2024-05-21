@@ -27,15 +27,13 @@ def user_option():
 
 
 def add_expense():
-    name = input('Give name to your expense:')
-    print('Choose expense category:')
-    for i in range(len(categories)):
-        print(f'{i+1}: {categories[i]}')
-    user_inp = input('Category: ')
+    name = input('Give name to your expense: ')
+
     categories_ints = tuple(range(1, len(categories) + 1))
-    category = user_input_in_given_integers(user_inp, categories_ints)
+    category = user_category_of_expense(categories_ints)
     if category not in categories_ints:
         return None
+
     user_inp_amount = input('Amount: ')
     value = user_input_value(user_inp_amount)
     if not value > 0:
@@ -43,6 +41,29 @@ def add_expense():
     return {'name': name, 'category': category, 'value': value}
 
 
+def print_categories():
+    for i in range(len(categories)):
+        print(f'{i+1}: {categories[i]}')
+
+
+def user_category_of_expense(categories_ints):
+    print('Choose expense category:')
+    print_categories()
+    user_inp = input('Category: ')
+    return user_input_in_given_integers(user_inp, categories_ints)
+
+
 def show_total_value(expenses):
     print('Total value:', expenses.total_value)
+    print()
+
+
+def show_stats(expenses):
+    response = expenses.value_per_category_stats()
+
+    labels = ('Category', 'Sum ', 'Share [%]')
+    print(f'{labels[0]:<15}{labels[1]:>10}{labels[2]:>10}')
+    print('-'*35)
+    for category in response:
+        print(f"{category:<15}{response[category]['total']:10.2f}{response[category]['share']:10.2f}")
 
