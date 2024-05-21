@@ -11,10 +11,10 @@ def user_input_in_given_integers(user_inp, options):
             raise ValueError
     except ValueError:
         print(f'Option should be one of {options}.')
-        option = 0
+        option = DEFAULT_DUMMY_OPTION
     except Exception as e:
         print(f'Error {e}')
-        option = 0
+        option = DEFAULT_DUMMY_OPTION
     return option
 
 
